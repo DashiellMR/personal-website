@@ -1,0 +1,155 @@
+:root {
+  --background-color: rgb(25, 25, 25);
+  --text-color: #fff;
+  --link-color: #57a5de;
+  --subtext-color-dark: #abb0ac;
+  --subtext-color-light: #333;
+}
+
+[data-theme="light"] {
+  --background-color: #fff;
+  --text-color: black;
+  --link-color: #5c35c4;
+  --subtext-color: var(--subtext-color-light);
+}
+
+[data-theme="dark"] {
+  --subtext-color: var(--subtext-color-dark);
+}
+
+/* Theme toggle styles */
+.theme-toggle {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 45px;
+  border-radius: 50%;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+[data-theme="dark"] .theme-toggle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #fff;
+  transition: 0.5s;
+  transform: scale(0.9);
+  z-index: -1;
+}
+
+[data-theme="light"] .theme-toggle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #000;
+  transition: 0.5s;
+  transform: scale(0.9);
+  z-index: -1;
+}
+
+[data-theme="dark"] .theme-toggle:hover::before {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px #fff;
+}
+
+[data-theme="light"] .theme-toggle:hover::before {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px #000;
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  box-shadow: 0 0 5px #fff; /* Adds border-shadow effect */
+  text-shadow: 0 0 5px #fff;
+}
+
+[data-theme="light"] .theme-toggle:hover {
+  box-shadow: 0 0 5px #000; /* Adds border-shadow effect */
+  text-shadow: 0 0 5px #000;
+}
+
+#themeIcon {
+  width: 40px; /* Adjust size as needed */
+  height: 40px; /* Adjust size as needed */
+  position: relative;
+  top: 50%; /* Align icon vertically */
+  transform: translateY(-50%);
+  z-index: 1; /* Ensure it appears above the hover effects */
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  transition: background-color 0.5s ease, color 0.5s ease; /* Add transition for color and background */
+}
+
+.name {
+  font-size: 22px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between; /* Aligns elements to the edges */
+  align-items: center; /* Aligns vertically */
+}
+
+.text-container {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
+  text-align: left;
+}
+
+.text {
+  font-family: "Montserrat";
+  font-size: 17px;
+}
+
+.subtext {
+  color: var(--subtext-color);
+  transition: color 0.5s ease; /* Add smooth transition for color */
+}
+
+.hover-effect {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.25s ease, text-shadow 0.25s ease; /* Add ease to transition */
+}
+
+.hover-effect:hover {
+  text-shadow: 1px 0 10px var(--link-color);
+}
+
+/* Adjust text and hover-effect sizes for mobile devices */
+@media (max-width: 768px) {
+  .text {
+    font-size: 18px; /* Added px to font-size */
+  }
+  .hover-effect {
+    font-size: 18px; /* Adjust font size for mobile */
+  }
+  .text {
+    justify-content: center; /* Center the text on mobile */
+    padding: 0 10px; /* Add padding to prevent overflow */
+  }
+}
+
+@media (max-width: 480px) {
+  .text {
+    font-size: 14px; /* Added px to font-size */
+  }
+  .hover-effect {
+    font-size: 14px;
+  }
+}
